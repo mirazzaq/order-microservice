@@ -9,7 +9,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-Route::group(['prefix' => 'orders'], function(){
+Route::group(['prefix' => 'orders', 'middleware' => 'access'], function(){
     Route::get('/', [OrderController::class, 'index']);
     Route::post('/', [OrderController::class, 'store']);
     Route::get('/{order}', [OrderController::class, 'show']);
